@@ -18,9 +18,6 @@ static: $(EXECUTABLE).static
 $(EXECUTABLE).static: $(OBJ)
 	$(CC) -static -static-libgcc $(CFLAGS) -o $@ $(OBJ) $(LIBS) 
 
-bloom.o: bloom.c $(DEPS) globals.c
-	$(CC) -c $(CFLAGS) -o $@ $<
-
 %.o: %.c $(DEPS)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
