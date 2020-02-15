@@ -1,3 +1,8 @@
+/* File:    testMD6.c
+   This is a test file for the MD6 signature
+   Scott Ross
+*/
+
 #include "md6.h"
 #include <string.h>
 #include <stdio.h>
@@ -13,7 +18,7 @@ int msglenbytes = 0;
 
 unsigned char hashval[512];
 
-int result = 0;
+int result  = 0;
 int bitsize = 128;
 int MD6_DIGEST_LENGTH = bitsize / 8;
 md6_state st;
@@ -25,21 +30,25 @@ md6_init(&st, bitsize);
 //		       );
 result = md6_update( &st, in, 63);
 
-printf("result %d\n", result);
+printf("MD6 update result %d\n", result);
 
 md6_final( &st, hashval);
 
-// printf("%x\n", hashval);
-// printf("%s\n", st.hashval);
 
 int length = st.d / 8;
 printf("hash length %d\n", length);
 
+// print out the MD6 hash value
 int i;
+printf("hashvalue ");
 for(i = 0; i < MD6_DIGEST_LENGTH; i++) printf("%02x", st.hashval[i]);
+
+// use the MD6 st state hash hex 
+printf("\nhashvalue %s\n", st.hexhashval);
 
 printf("\n");
 
+// run MD6 on a file
 char *filename="testMD6.c";
 hashTargetFile(filename, hashval, bitsize);
 
