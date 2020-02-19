@@ -1,5 +1,5 @@
 # md6
-A Fork of the MD6 Signature with a Makefile
+A Fork of the MD6 Signature for CGO Golang
 
 ## Wikipedia link
 https://en.wikipedia.org/wiki/MD6
